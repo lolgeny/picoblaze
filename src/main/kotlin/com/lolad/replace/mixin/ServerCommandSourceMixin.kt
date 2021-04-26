@@ -25,12 +25,43 @@ class ServerCommandSourceMixin: ServerCommandSourceDuck {
         at = At(value = "NEW", target = "Lnet/minecraft/server/command/ServerCommandSource;")
     )
     fun copy(output: CommandOutput, pos: Vec3d, rot: Vec2f, world: ServerWorld, level: Int, simpleName: String, name: Text, server: MinecraftServer, entity: Entity?, silent: Boolean, consumer: ResultConsumer<ServerCommandSource>, entityAnchor: EntityAnchorArgumentType.EntityAnchor): ServerCommandSource {
-        ServerCommandSource::class.java.getConstructor(CommandOutput::class.java, Vec3d::class.java, Vec2f::class.java, ServerWorld::class.java, Int::class.java, String::class.java, Text::class.java, MinecraftServer::class.java, Entity::class.java, Boolean::class.java, ResultConsumer::class.java, EntityAnchorArgumentType.EntityAnchor::class.java)
-            .let {
-                it.isAccessible = true
-                return it.newInstance(output, pos, rot, world, level, simpleName, name, server, entity, silent, consumer, entityAnchor).also {
-                    (it as ServerCommandSourceDuck).replacements = (this as ServerCommandSourceDuck).replacements
+        try {
+            ServerCommandSource::class.java.getConstructor(
+                CommandOutput::class.java,
+                Vec3d::class.java,
+                Vec2f::class.java,
+                ServerWorld::class.java,
+                Int::class.java,
+                String::class.java,
+                Text::class.java,
+                MinecraftServer::class.java,
+                Entity::class.java,
+                Boolean::class.java,
+                ResultConsumer::class.java,
+                EntityAnchorArgumentType.EntityAnchor::class.java
+            )
+                .let {
+                    it.isAccessible = true
+                    return it.newInstance(
+                        output,
+                        pos,
+                        rot,
+                        world,
+                        level,
+                        simpleName,
+                        name,
+                        server,
+                        entity,
+                        silent,
+                        consumer,
+                        entityAnchor
+                    ).also {
+                        (it as ServerCommandSourceDuck).replacements = (this as ServerCommandSourceDuck).replacements
+                    }
                 }
-            }
+        } catch (e: Exception) {
+            println("[BUG] Exception in ServerCommandSource mixin:\n$e")
+            throw e
+        }
     }
 }

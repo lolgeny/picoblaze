@@ -1,0 +1,4 @@
+{
+  "commands.execute.replace.score.null": "Can't get value of %s for %s; none is set",
+  "commands.execute.replace.block.null": "The target block is not a block entity"
+}

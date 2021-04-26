@@ -75,8 +75,10 @@ execute replace command text {"text":"say Flattened!"} run $command
 ### `data`
 This accepts an nbt location and path,
 using the same format as `data get`.
+
+After the path, there's an `<interpret>` field which acts like the one in text components.
 ```
-execute replace pos data entity @s Pos run say I'm at $pos.
+execute replace pos data entity @s Pos false run say I'm at $pos.
 ```
 
 ### `score`

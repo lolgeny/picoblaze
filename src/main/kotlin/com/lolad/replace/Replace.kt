@@ -67,7 +67,7 @@ class Replace : ModInitializer {
                                                                                 argument("command", GreedyArgumentType())
                                                                                 .executes {
                                                                                     runReplaced(
-                                                                                        replaceData(DataType.Entity),
+                                                                                        replaceData(DataType.Block),
                                                                                         it
                                                                                     )
                                                                                 }
@@ -88,7 +88,7 @@ class Replace : ModInitializer {
                                                                                 argument("command", GreedyArgumentType())
                                                                                 .executes {
                                                                                     runReplaced(
-                                                                                        replaceData(DataType.Entity),
+                                                                                        replaceData(DataType.Storage),
                                                                                         it
                                                                                     )
                                                                                 }

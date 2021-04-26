@@ -4,9 +4,10 @@ import com.lolad.replace.duck.ServerCommandSourceDuck
 import com.mojang.brigadier.arguments.BoolArgumentType
 import com.mojang.brigadier.context.CommandContext
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
 import net.minecraft.command.argument.*
 import net.minecraft.nbt.*
+import net.minecraft.scoreboard.ScoreboardObjective
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.text.Text
 import net.minecraft.text.Texts
@@ -15,11 +16,11 @@ import net.minecraft.text.TranslatableText
 typealias Ctx = CommandContext<ServerCommandSource>
 
 val SCORE_NOT_EXIST_EXCEPTION = Dynamic2CommandExceptionType { target, objective ->
-    TranslatableText("commands.execute.replace.score.null", arrayOf(target, objective))
+    TranslatableText("commands.execute.replace.score.null", (objective as ScoreboardObjective).name, target)
 }
-val NOT_BLOCK_ENTITY_EXCEPTION = DynamicCommandExceptionType { position ->
-    TranslatableText("commands.execute.replace.block.null", position)
-}
+val NOT_BLOCK_ENTITY_EXCEPTION = SimpleCommandExceptionType(
+    TranslatableText("commands.execute.replace.block.null")
+)
 
 fun replaceScore(ctx: Ctx): String {
     val target = ScoreHolderArgumentType.getScoreHolder(ctx, "target")
@@ -45,7 +46,7 @@ fun replaceData(ty: DataType): (Ctx) -> String {
             DataType.Block -> {
                 val pos = BlockPosArgumentType.getBlockPos(ctx, ty.arg)
                 (
-                    ctx.source.world.getBlockEntity(pos) ?: throw NOT_BLOCK_ENTITY_EXCEPTION.create(pos)
+                    ctx.source.world.getBlockEntity(pos) ?: throw NOT_BLOCK_ENTITY_EXCEPTION.create()
                 ).readNbt(target)
             }
             DataType.Storage -> {
@@ -91,16 +92,13 @@ fun runReplaced(replace: (Ctx) -> String, ctx: Ctx): Int {
 
 fun eval(execute: Boolean): (Ctx) -> Int {
     return { ctx ->
-        println("eeee")
         var command = ctx.getArgument("command", String::class.java)
         if (execute) {
             command = "execute $command"
         }
-        println("command $command, map ${(ctx.source as ServerCommandSourceDuck).replacements}")
         for ((varName, replacement) in (ctx.source as ServerCommandSourceDuck).replacements) {
             command = command.replace("$$varName", replacement)
         }
-        println("now $command")
         ctx.source.minecraftServer.commandManager.execute(ctx.source, command)
     }
 }
