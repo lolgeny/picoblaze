@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "replace",
+  "version": "${version}",
+  "name": "Replace",
+  "description": "Adds the `execute replace` subcommand for dynamically composing commands.",
+  "authors": [
+    "lolad"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/replace/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.lolad.replace.Replace"
+    ]
+  },
+  "mixins": [
+    "replace.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17-alpha.21.16.a"
+  }
+}

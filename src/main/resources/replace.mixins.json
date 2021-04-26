@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.lolad.replace.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ServerCommandSourceMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
