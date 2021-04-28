@@ -5,4 +5,7 @@
   "commands.ride.too_large": "%s isn't big enough to be ridden by the whole group",
   "commands.ride.not_riding": "No provided entity is riding anything",
   "commands.ride.no_riders": "No provided entity has any passengers",
+  "commands.ride.start_riding.success": "Started riding entities",
+  "commands.ride.stop_riding.success": "Stopped riding entities",
+  "commands.ride.evict_riders.success": "Evicted riders"
 }

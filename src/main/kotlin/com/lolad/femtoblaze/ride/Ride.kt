@@ -81,7 +81,6 @@ object Ride: Module() {
                     "if_group_fits" -> {
                         if (riders.size < 2 || (ride is BoatEntity && riders.size < 3)) {
                             for (rider in riders) if (!rider.startRiding(ride)) throw CANNOT_RIDE_EXCEPTION.create(rider, ride)
-                            println("d")
                         } else throw TOO_LARGE_GROUP_EXCEPTION.create(ride)
                     }
                     "until_full" -> {
@@ -90,6 +89,7 @@ object Ride: Module() {
                 }
             }
         }
+        ctx.source.sendFeedback(TranslatableText("commands.ride.start_riding.success"), true)
         return riders.size
     }
     private fun stopRiding(ctx: Ctx): Int {
@@ -99,6 +99,7 @@ object Ride: Module() {
         for (rider in riders) {
             rider.stopRiding()
         }
+        ctx.source.sendFeedback(TranslatableText("commands.ride.stop_riding.success"), true)
         return riding
     }
     private fun evictRiders(ctx: Ctx): Int {
@@ -108,6 +109,7 @@ object Ride: Module() {
         for (vehicle in rides) {
             vehicle.removeAllPassengers()
         }
+        ctx.source.sendFeedback(TranslatableText("commands.ride.evict_riders.success"), true)
         return passengers
     }
 }
