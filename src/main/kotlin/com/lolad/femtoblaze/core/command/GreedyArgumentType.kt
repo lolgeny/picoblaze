@@ -1,4 +1,4 @@
-package com.lolad.replace
+package com.lolad.femtoblaze.core.command
 
 import com.mojang.brigadier.StringReader
 import com.mojang.brigadier.arguments.ArgumentType

@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "replace",
+  "id": "femtoblaze",
   "version": "${version}",
-  "name": "Replace",
-  "description": "Adds the `execute replace` subcommand for dynamically composing commands.",
+  "name": "Femtoblaze",
+  "description": "A collection of experimental features often discussed, to test if they would truly benefit commands and mapmaking.",
   "authors": [
     "lolad"
   ],
@@ -13,11 +13,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.lolad.replace.Replace"
+      "com.lolad.femtoblaze.Femtoblaze"
     ]
   },
   "mixins": [
-    "replace.mixins.json"
+    "femtoblaze.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.3",
