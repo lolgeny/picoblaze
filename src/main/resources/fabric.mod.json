@@ -14,6 +14,9 @@
   "entrypoints": {
     "main": [
       "com.lolad.femtoblaze.Femtoblaze"
+    ],
+    "client": [
+      "com.lolad.femtoblaze.FemtoblazeClient"
     ]
   },
   "mixins": [

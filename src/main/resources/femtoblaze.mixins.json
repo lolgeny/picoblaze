@@ -4,7 +4,10 @@
   "package": "com.lolad.femtoblaze.core.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ServerCommandSourceMixin"
+    "ServerCommandSourceMixin",
+    "MinecraftServerMixin",
+    "ServerResourceManagerMixin",
+    "ServerWorldMixin"
   ],
   "client": [
   ],

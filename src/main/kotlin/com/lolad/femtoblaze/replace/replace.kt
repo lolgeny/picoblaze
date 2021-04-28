@@ -1,12 +1,12 @@
 package com.lolad.femtoblaze.replace
 
 import com.lolad.femtoblaze.core.Module
+import com.lolad.femtoblaze.core.command.Ctx
 import com.lolad.femtoblaze.core.command.FixedTextArgumentType
 import com.lolad.femtoblaze.core.command.GreedyArgumentType
 import com.lolad.femtoblaze.replace.duck.ServerCommandSourceDuck
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.BoolArgumentType
-import com.mojang.brigadier.context.CommandContext
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
 import net.minecraft.command.argument.*
@@ -18,7 +18,6 @@ import net.minecraft.text.Text
 import net.minecraft.text.Texts
 import net.minecraft.text.TranslatableText
 
-typealias Ctx = CommandContext<ServerCommandSource>
 
 object Replace: Module() {
     override fun command(dispatcher: CommandDispatcher<ServerCommandSource>) {
@@ -167,7 +166,7 @@ enum class DataType(val arg: String) {
     Block("pos"), Entity("target"), Storage("storage")
 }
 
-fun replaceData(ty: DataType): (Ctx) -> String {
+inline fun replaceData(ty: DataType): (Ctx) -> String {
     return { ctx ->
         var target = NbtCompound()
         when (ty) {

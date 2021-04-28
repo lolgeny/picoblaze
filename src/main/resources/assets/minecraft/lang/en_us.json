@@ -1,4 +1,8 @@
 {
   "commands.execute.replace.score.null": "Can't get value of %s for %s; none is set",
-  "commands.execute.replace.block.null": "The target block is not a block entity"
+  "commands.execute.replace.block.null": "The target block is not a block entity",
+  "commands.ride.cannot_ride": "%s cannot ride %s right now.",
+  "commands.ride.too_large": "%s isn't big enough to be ridden by the whole group",
+  "commands.ride.not_riding": "No provided entity is riding anything",
+  "commands.ride.no_riders": "No provided entity has any passengers",
 }
