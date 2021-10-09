@@ -1,6 +1,6 @@
-package com.lolad.femtoblaze.game_event
+package com.lolad.picoblaze.game_event
 
-import com.lolad.femtoblaze.core.Module
+import com.lolad.picoblaze.core.Module
 import net.minecraft.loot.context.LootContextParameters
 import net.minecraft.loot.context.LootContextType
 

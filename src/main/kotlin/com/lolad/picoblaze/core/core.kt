@@ -1,4 +1,4 @@
-package com.lolad.femtoblaze.core
+package com.lolad.picoblaze.core
 
 import com.mojang.brigadier.CommandDispatcher
 import net.minecraft.client.MinecraftClient

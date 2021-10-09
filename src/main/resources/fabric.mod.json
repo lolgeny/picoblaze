@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "femtoblaze",
+  "id": "picoblaze",
   "version": "${version}",
-  "name": "Femtoblaze",
+  "name": "Picoblaze",
   "description": "A collection of experimental features often discussed, to test if they would truly benefit commands and mapmaking.",
   "authors": [
     "lolad"
@@ -13,18 +13,18 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.lolad.femtoblaze.Femtoblaze"
+      "com.lolad.picoblaze.PicoBlaze"
     ],
     "client": [
-      "com.lolad.femtoblaze.FemtoblazeClient"
+      "com.lolad.picoblaze.PicoblazeClient"
     ]
   },
   "mixins": [
-    "femtoblaze.mixins.json"
+    "picoblaze.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.17-alpha.21.16.a"
+    "minecraft": "1.17.x"
   }
 }

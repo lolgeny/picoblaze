@@ -1,6 +1,6 @@
-Femtoblaze - an experimental fabric mod for testing largely wanted ideas for data packs and mapmaking.
+Picoblaze - an experimental fabric mod for testing largely wanted ideas for data packs and mapmaking.
 
-There are many modules, each of which are documented on [the wiki](https://github.com/lolgeny/femtoblaze/wiki).
+There are many modules, each of which are documented on [the wiki](https://github.com/lolgeny/picoblaze/wiki).
 You can read about them there.
 
 It may be buggy

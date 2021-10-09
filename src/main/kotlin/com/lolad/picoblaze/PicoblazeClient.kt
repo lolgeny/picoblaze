@@ -1,10 +1,10 @@
-package com.lolad.femtoblaze
+package com.lolad.picoblaze
 
-import com.lolad.femtoblaze.core.Events
+import com.lolad.picoblaze.core.Events
 import net.fabricmc.api.ClientModInitializer
 import net.minecraft.client.MinecraftClient
 
-class FemtoblazeClient: ClientModInitializer {
+class PicoblazeClient: ClientModInitializer {
     override fun onInitializeClient() {
         Events.client.emit(MinecraftClient.getInstance())
     }

@@ -1,10 +1,10 @@
-package com.lolad.femtoblaze.replace
+package com.lolad.picoblaze.replace
 
-import com.lolad.femtoblaze.core.Module
-import com.lolad.femtoblaze.core.command.Ctx
-import com.lolad.femtoblaze.core.command.FixedTextArgumentType
-import com.lolad.femtoblaze.core.command.GreedyArgumentType
-import com.lolad.femtoblaze.replace.duck.ServerCommandSourceDuck
+import com.lolad.picoblaze.core.Module
+import com.lolad.picoblaze.core.command.Ctx
+import com.lolad.picoblaze.core.command.FixedTextArgumentType
+import com.lolad.picoblaze.core.command.GreedyArgumentType
+import com.lolad.picoblaze.replace.duck.ServerCommandSourceDuck
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.BoolArgumentType
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType
@@ -153,7 +153,7 @@ val NOT_BLOCK_ENTITY_EXCEPTION = SimpleCommandExceptionType(
 fun replaceScore(ctx: Ctx): String {
     val target = ScoreHolderArgumentType.getScoreHolder(ctx, "target")
     val obj = ScoreboardObjectiveArgumentType.getObjective(ctx, "objective")
-    val scoreboard = ctx.source.minecraftServer.scoreboard
+    val scoreboard = ctx.source.server.scoreboard
     if (scoreboard.playerHasObjective(target, obj)) {
         val score = scoreboard.getPlayerScore(target, obj)
         return score.score.toString()
@@ -166,7 +166,7 @@ enum class DataType(val arg: String) {
     Block("pos"), Entity("target"), Storage("storage")
 }
 
-inline fun replaceData(ty: DataType): (Ctx) -> String {
+fun replaceData(ty: DataType): (Ctx) -> String {
     return { ctx ->
         var target = NbtCompound()
         when (ty) {
@@ -178,7 +178,7 @@ inline fun replaceData(ty: DataType): (Ctx) -> String {
                 ).readNbt(target)
             }
             DataType.Storage -> {
-                target = ctx.source.minecraftServer.dataCommandStorage.get(
+                target = ctx.source.server.dataCommandStorage.get(
                     IdentifierArgumentType.getIdentifier(ctx, ty.arg)
                 )
             }
@@ -222,5 +222,5 @@ fun eval(ctx: Ctx): Int {
     for ((varName, replacement) in (ctx.source as ServerCommandSourceDuck).replacements) {
         command = command.replace("$$varName", replacement)
     }
-    return ctx.source.minecraftServer.commandManager.execute(ctx.source, command)
+    return ctx.source.server.commandManager.execute(ctx.source, command)
 }

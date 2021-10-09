@@ -1,4 +1,4 @@
-package com.lolad.femtoblaze.game_event
+package com.lolad.picoblaze.game_event
 
 import com.google.common.collect.ImmutableSet
 import net.minecraft.loot.condition.LootCondition

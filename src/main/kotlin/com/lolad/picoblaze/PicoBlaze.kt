@@ -1,13 +1,13 @@
-package com.lolad.femtoblaze
+package com.lolad.picoblaze
 
-import com.lolad.femtoblaze.core.Events
-import com.lolad.femtoblaze.game_event.GameEvent
-import com.lolad.femtoblaze.replace.Replace
-import com.lolad.femtoblaze.ride.Ride
+import com.lolad.picoblaze.core.Events
+import com.lolad.picoblaze.game_event.GameEvent
+import com.lolad.picoblaze.replace.Replace
+import com.lolad.picoblaze.ride.Ride
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback
 
-class Femtoblaze : ModInitializer {
+class PicoBlaze : ModInitializer {
     override fun onInitialize() {
         // MODULES
         Replace

@@ -1,7 +1,7 @@
-package com.lolad.femtoblaze.ride
+package com.lolad.picoblaze.ride
 
-import com.lolad.femtoblaze.core.Module
-import com.lolad.femtoblaze.core.command.Ctx
+import com.lolad.picoblaze.core.Module
+import com.lolad.picoblaze.core.command.Ctx
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.builder.LiteralArgumentBuilder
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType
