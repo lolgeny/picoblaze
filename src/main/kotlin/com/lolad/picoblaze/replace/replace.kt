@@ -11,6 +11,7 @@ import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
 import net.minecraft.command.argument.*
 import net.minecraft.nbt.*
+import net.minecraft.predicate.NbtPredicate
 import net.minecraft.scoreboard.ScoreboardObjective
 import net.minecraft.server.command.CommandManager
 import net.minecraft.server.command.ServerCommandSource
@@ -168,20 +169,19 @@ enum class DataType(val arg: String) {
 
 fun replaceData(ty: DataType): (Ctx) -> String {
     return { ctx ->
-        var target = NbtCompound()
-        when (ty) {
-            DataType.Entity -> EntityArgumentType.getEntity(ctx, ty.arg).writeNbt(target)
+        val target = when (ty) {
+            DataType.Entity -> NbtPredicate.entityToNbt(EntityArgumentType.getEntity(ctx, ty.arg))
             DataType.Block -> {
+                val target = NbtCompound()
                 val pos = BlockPosArgumentType.getBlockPos(ctx, ty.arg)
                 (
                     ctx.source.world.getBlockEntity(pos) ?: throw NOT_BLOCK_ENTITY_EXCEPTION.create()
                 ).readNbt(target)
+                target
             }
-            DataType.Storage -> {
-                target = ctx.source.server.dataCommandStorage.get(
-                    IdentifierArgumentType.getIdentifier(ctx, ty.arg)
-                )
-            }
+            DataType.Storage -> ctx.source.server.dataCommandStorage.get(
+                IdentifierArgumentType.getIdentifier(ctx, ty.arg)
+            )
         }
         val path = NbtPathArgumentType.getNbtPath(ctx, "path")
         var data = when (val p = path.get(target).first()) {
