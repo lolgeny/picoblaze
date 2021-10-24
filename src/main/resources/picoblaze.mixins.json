@@ -4,10 +4,11 @@
   "package": "com.lolad.picoblaze.core.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ServerCommandSourceMixin",
     "MinecraftServerMixin",
+    "ServerCommandSourceMixin",
     "ServerResourceManagerMixin",
-    "ServerWorldMixin"
+    "ServerWorldMixin",
+    "StructureManagerMixin"
   ],
   "client": [
   ],

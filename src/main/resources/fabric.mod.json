@@ -13,10 +13,16 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.lolad.picoblaze.PicoBlaze"
+      {
+        "adapter": "kotlin",
+        "value": "com.lolad.picoblaze.PicoBlaze"
+      }
     ],
     "client": [
-      "com.lolad.picoblaze.PicoblazeClient"
+      {
+        "adapter": "kotlin",
+        "value": "com.lolad.picoblaze.PicoblazeClient"
+      }
     ]
   },
   "mixins": [
@@ -25,6 +31,7 @@
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.17.x"
+    "minecraft": "1.17.x",
+    "fabric-language-kotlin": ">=1.6.5+kotlin.1.5.31"
   }
 }
