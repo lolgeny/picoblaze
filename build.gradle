@@ -19,7 +19,7 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.21'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10'
 
 //    modImplementation(group: "net.fabricmc", name: "fabric-language-kotlin", version: "1.6.5+kotlin.1.5.31")
 
@@ -75,7 +75,6 @@ publishing {
     }
 }
 repositories {
-    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     mavenCentral()
 }
 compileKotlin {
