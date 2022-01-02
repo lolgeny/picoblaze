@@ -103,7 +103,8 @@ $RECYCLE.BIN/
 .gradle/
 .vscode/
 build/
-
+remappedSrc/
+bin/
 
 # Ignore Gradle GUI config
 gradle-app.setting
