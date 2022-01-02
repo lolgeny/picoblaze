@@ -1,0 +1,16 @@
+{
+  "commands.execute.replace.score.null": "Can't get value of %s for %s; none is set",
+  "commands.execute.replace.block.null": "The target block is not a block entity",
+  "commands.ride.cannot_ride": "%s cannot ride %s right now.",
+  "commands.ride.too_large": "%s isn't big enough to be ridden by the whole group",
+  "commands.ride.not_riding": "No provided entity is riding anything",
+  "commands.ride.no_riders": "No provided entity has any passengers",
+  "commands.ride.start_riding.success": "Started riding entities",
+  "commands.ride.stop_riding.success": "Stopped riding entities",
+  "commands.ride.evict_riders.success": "Evicted riders",
+  "commands.structure.save.success": "Saved structure %s",
+  "commands.structure.load.no_structure": "No structure found at %s",
+  "commands.structure.load.success": "Loaded structure %s",
+  "commands.gui.no_screen": "The target block has no screen",
+  "commands.gui.success": "Opened gui for %d players"
+}
